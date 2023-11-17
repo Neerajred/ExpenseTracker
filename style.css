@@ -8,28 +8,37 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: #f7f7f7;
+header {
+  background-color: #7e3131;
+  color: #FFFFFF;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 75px;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+
+.btn-position{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+
+}
+body {
   margin: 0;
+  align-items: center;
   font-family: 'Lato', sans-serif;
 }
 
-header {
-  background-color: #2dde77;
-  color: #FFFFFF;
-  text-align: center;
-  height: 75px;
-  width: 100%;
+.form-details{
+  min-width: none;
+  max-width: 375px;
+  margin: 0px auto;
 }
 
-.container {
+
+.main-container{
   margin: 30px auto;
-  width: 350px;
 }
 
 h1 {
@@ -38,7 +47,7 @@ h1 {
 }
 
 h3 {
-  border-bottom: 1px solid #bbb;
+  border-bottom: 2px solid #7e3131;
   padding-bottom: 10px;
   margin: 40px 0 10px;
 }
@@ -55,7 +64,9 @@ h4 {
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  margin: 20px 0;
+  margin: 20px auto;
+  min-width: 200px;
+  width: 370px;
 }
 
 .inc-exp-container > div {
@@ -75,7 +86,6 @@ h4 {
 
 .money.plus {
   color: #0ab852;
-  font-weight: 800;
 }
 
 .money.minus {
@@ -100,6 +110,7 @@ input[type='number'] {
 
 .transaction-type{
   border: 1px solid #dedede;
+  background-color: #fff;
   border-radius: 5px;
   display: block;
   font-size: 16px;
@@ -108,7 +119,7 @@ input[type='number'] {
 }
 
 
-.btn {
+.AddTransactionbtn {
   cursor: pointer;
   background-color: #0366D6;
   box-shadow: var(--box-shadow);
@@ -141,7 +152,7 @@ input[type='number'] {
   justify-content: space-between;
   position: relative;
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px 30px;
 }
 
 .list li.plus {
@@ -167,7 +178,3 @@ input[type='number'] {
   opacity: 1;
 }
 
-
-.d-none{
-  display: none;
-}

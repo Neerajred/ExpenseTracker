@@ -1,64 +1,67 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-
-    <title>Expense Tracker using JavaScript - @code.scientist x @codingtorque</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <title>Expense Tracker using HTML, CSS, JS -------@neeraj</title>
 </head>
 
 <body>
     <header>
         <h2>Expense Tracker</h2>
     </header>
-    <div class="d-none">
-        <h1 class="">Enter your Name....</h1>
-        <input type="text" class="form-control">
-    </div>
-    <div class="container" id="sectionMainContainer">
-        <h4>Your Balance</h4>
-        <h1 id="balance">Rs. 0.00</h1>
-    
-        <div class="inc-exp-container">
-            <div>
-                <h4>Income</h4>
-                <p id="money-plus" class="money plus">+0.00/-</p>
-            </div>
-            <div>
-                <h4>Expense</h4>
-                <p id="money-minus" class="money minus">-0.00/-</p>
+
+    <div class="container-fluid main-container" id="sectionMainContainer">      
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div style="margin: 0px auto; min-width: none;" class="text-center">
+                    <h4>Your Balance</h4>
+                    <h1 id="balance">Rs. 0.00</h1>
+                    <div class="inc-exp-container">
+                        <div>
+                            <h4>Income</h4>
+                            <p id="money-income" class="money plus">+0.00/-</p>
+                        </div>
+                        <div>
+                            <h4>Expense</h4>
+                            <p id="money-expense" class="money minus">-0.00/-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+            <div class="col-12 col-md-6">
+                <h3 class="text-center">Add new transaction</h3>
+                <div class="form-details">
+                    <form id="form">
+                        <div class="form-control">
+                            <label for="text">Category</label>
+                            <input type="text" id="text" placeholder="Enter Category...." />
+                        </div>
+                        <div class="transaction-type mt-2 mb-2">
+                            <select class="transaction-type" id="transactionType">
+                                <option value="+">Income</option>
+                                <option value="-">Expense</option>
+                            </select>
+                        </div>
+                        <div class="form-control">
+                            <label for="amount">Amount <br />
+                            </label>
+                            <input type="number" id="amount" placeholder="Enter amount..." />
+                        </div>
+                        <button class="AddTransactionbtn">Add transaction</button>
+                    </form>
+                </div>
             </div>
         </div>
-    
+    </div>
+    <div class="p-3 text-center">
         <h3>History</h3>
         <ul id="list" class="list">
-            <!-- List of income and expense  -->
+            <!-- here List items for income or expenses add dynamically  -->
         </ul>
-    
-        <h3>Add new transaction</h3>
-        <form id="form">
-            <div class="form-control">
-                <label for="text">Category</label>
-                <input type="text" id="text" placeholder="Enter Category...." />
-            </div>
-            <div class="transaction-type">
-                <select class="transaction-type" id="transactionType">
-                    <option value="+">Income</option>
-                    <option value="-">Expense</option>
-                </select>
-            </div>
-            <div class="form-control">
-                <label for="amount">Amount <br />
-                </label>
-                <input type="number" id="amount" placeholder="Enter amount..." />
-            </div>
-            <button class="btn">Add transaction</button>
-        </form>
     </div>
 
     <script src="script.js"></script>

@@ -1,13 +1,14 @@
-const balance = document.getElementById('balance');
-const money_plus = document.getElementById('money-plus');
-const money_minus = document.getElementById('money-minus');
-const list = document.getElementById('list');
-const form = document.getElementById('form');
-const category = document.getElementById('text');
-const transactionType = document.getElementById("transactionType");
-const amount = document.getElementById('amount');
+let balance = document.getElementById('balance');
+let money_income = document.getElementById('money-income');
+let money_expense = document.getElementById('money-expense');
+let list = document.getElementById('list');
+let form = document.getElementById('form');
+let category = document.getElementById('text');
+let transactionType = document.getElementById("transactionType");
+let amount = document.getElementById('amount');
 
-const localStorageTransactions = JSON.parse(
+
+let  localStorageTransactions = JSON.parse(
     localStorage.getItem('transactions')
 );
 
@@ -21,7 +22,7 @@ function addTransaction(e) {
     if (text.value.trim() === '' || amount.value.trim() === '') {
         alert('Please add a text and amount');
     } else {
-        const transaction = {
+        let transaction = {
             id: generateID(),
             text: category.value,
             amount: parseInt(amount.value)
@@ -53,11 +54,11 @@ function generateID() {
 function addTransactionDOM(transaction) {
     // Get sign
     
-    const sign = transaction.amount <0?"-":"+";
+    let sign = transaction.amount <0?"-":"+";
 
-    const item = document.createElement('li');
+    let item = document.createElement('li');
 
-    // Add class based on value
+    //adding the  class based on transaction type
     
     item.classList.add(transaction.amount < 0 ? 'minus' : 'plus');
 
@@ -76,27 +77,27 @@ function addTransactionDOM(transaction) {
     list.appendChild(item);
 }
 
-// Update the balance, income and expense
+// Update the values of balance, income and expense
 function updateValues() {
-    const amounts = transactions.map(transaction => transaction.amount);
+    let amounts = transactions.map(transaction => transaction.amount);
     console.log(amounts);
-    const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
-    const income = amounts
+    let total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
+    let income = amounts
         .filter(item => item > 0)
         .reduce((acc, item) => (acc += item), 0)
         .toFixed(2);
-    const expense = (
+    let expense = (
         amounts.filter(item => item < 0).reduce((acc, item) => (acc += item), 0) *
         -1
     ).toFixed(2);
     
 
      balance.textContent = "Rs. "+`${total}`;
-     money_plus.textContent = `${income}/-`;
-     money_minus.textContent = `${expense}/-`;
+     money_income.textContent = `${income}/-`;
+     money_expense.textContent = `${expense}/-`;
 }
 
-// Remove transaction by ID
+// Removing the  transaction by ID from History
 function removeTransaction(id) {
     transactions = transactions.filter(transaction => transaction.id !== id);
 
@@ -105,17 +106,20 @@ function removeTransaction(id) {
     init();
 }
 
-// Update local storage transactions
+// This function updates the local storage Values
 function updateLocalStorage() {
     localStorage.setItem('transactions', JSON.stringify(transactions));
 }
 
-// Init app
+
+// Function Initializer
 function init() {
     list.textContent ='';
 
     transactions.forEach(addTransactionDOM);
     updateValues();
+    
+    
 }
 
 init();
