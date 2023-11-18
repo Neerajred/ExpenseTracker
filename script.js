@@ -6,6 +6,7 @@ let form = document.getElementById('form');
 let category = document.getElementById('text');
 let transactionType = document.getElementById("transactionType");
 let amount = document.getElementById('amount');
+let date = document.getElementById("date");
 
 
 let  localStorageTransactions = JSON.parse(
@@ -19,13 +20,14 @@ let transactions =
 function addTransaction(e) {
     e.preventDefault();
 
-    if (text.value.trim() === '' || amount.value.trim() === '') {
-        alert('Please add a text and amount');
+    if (text.value.trim() === '' || amount.value.trim() === '' || date.value.trim() === '') {
+        alert('Please add a Category and amount');
     } else {
         let transaction = {
             id: generateID(),
             text: category.value,
-            amount: parseInt(amount.value)
+            amount: parseInt(amount.value),
+            date: date.value
         };
         if(transactionType.value === "-"){
             transaction.amount = parseInt("-"+amount.value);
@@ -65,7 +67,7 @@ function addTransactionDOM(transaction) {
 
 
     item.innerHTML = `
-    ${transaction.text} <span>${sign}${Math.abs(
+    ${transaction.text} <span> ${transaction.date} </span> <span>${sign}${Math.abs(
         transaction.amount
     )}<button class="delete-btn" onclick="removeTransaction(${transaction.id
         })"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
